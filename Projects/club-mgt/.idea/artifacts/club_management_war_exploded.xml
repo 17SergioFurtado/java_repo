@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="club-management:war exploded">
+    <output-path>$PROJECT_DIR$/target/club-management</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>club-management</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="club-management" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/club-management/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="club-management/web/Web" />
+    </root>
+  </artifact>
+</component>
