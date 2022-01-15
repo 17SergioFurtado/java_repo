@@ -1,8 +1,29 @@
-<html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>List Of Products</title>
 </head>
 <body>
     <h2>Just testing...</h2>
+
+    <table>
+        <tr>
+            <th>First Name</th>
+        </tr>
+
+        <!-- loop over and print our customers -->
+
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.category}"></td>
+                <td th:text="${product.price}"></td>
+            </tr>
+
+
+
+    </table>
+
+
 </body>
 </html>
