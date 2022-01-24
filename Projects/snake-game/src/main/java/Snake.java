@@ -6,35 +6,35 @@ import java.util.List;
 
 public class Snake {
 
-    private List<Rectangle> snakeHead;
+    private List<Rectangle> snake;
     private String movingDirection;
 
     public Snake() {
 
         Rectangle segment;
-        this.snakeHead = new LinkedList<>();
-        this.movingDirection = "Down";
+        this.snake = new LinkedList<>();
+        this.movingDirection = "DOWN";
 
         segment = new Rectangle(20, 20, 20, 20);
         segment.setColor(Color.BLACK);
         segment.draw();
         segment.fill();
 
-        this.snakeHead.add(segment);
+        this.snake.add(segment);
 
         segment = new Rectangle(40, 20, 20, 20);
         segment.setColor(Color.BLACK);
         segment.draw();
         segment.fill();
 
-        this.snakeHead.add(segment);
+        this.snake.add(segment);
 
         segment = new Rectangle(60, 20, 20, 20);
         segment.setColor(Color.BLACK);
         segment.draw();
         segment.fill();
 
-        this.snakeHead.add(segment);
+        this.snake.add(segment);
 
 
     }
@@ -43,11 +43,34 @@ public class Snake {
 
         Rectangle segment;
 
-        for (int i = 0; i < this.snakeHead.size() - 1; i++) {
+        for (int i = 0; i < this.snake.size() - 1; i++) {
 
-            segment = this.snakeHead.get(i);
-            segment.translate(this.snakeHead.get(i + 1).getX() - this.snakeHead.get(i).getX(), this.snakeHead.get(i + 1).getY() - this.snakeHead.get(i).getY());
+            segment = this.snake.get(i);
+            segment.translate(this.snake.get(i + 1).getX() - this.snake.get(i).getX(), this.snake.get(i + 1).getY() - this.snake.get(i).getY());
         }
-        this.snakeHead.get(2).translate(0, 20);
+
+        if (this.movingDirection.equals("DOWN")) {
+
+            this.snake.get(2).translate(0, 20);
+        }
+        if (this.movingDirection.equals("UP")) {
+
+            this.snake.get(2).translate(0, -20);
+        }
+        if (this.movingDirection.equals("LEFT")) {
+
+            this.snake.get(2).translate(-20, 0);
+        }
+        if (this.movingDirection.equals("RIGHT")) {
+
+            this.snake.get(2).translate(20, 0);
+        }
+
     }
+
+    public void setMovingDirection(String movingDirection) {
+
+        this.movingDirection = movingDirection;
+    }
+
 }
