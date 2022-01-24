@@ -11,4 +11,11 @@ public class Screen {
         this.snake = new Snake();
 
     }
+
+    public void update() {
+
+        this.snake.move();
+
+    }
+
 }
