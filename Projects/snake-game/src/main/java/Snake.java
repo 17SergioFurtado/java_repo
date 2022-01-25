@@ -73,4 +73,9 @@ public class Snake {
         this.movingDirection = movingDirection;
     }
 
+    public String getMovingDirection() {
+
+        return movingDirection;
+    }
+
 }

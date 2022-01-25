@@ -1,10 +1,10 @@
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-public class DirectionControl  implements KeyboardHandler {
+public class KeyBoardListener implements KeyboardHandler {
 
     private Keyboard keyboard;
     private Snake snake;
@@ -42,17 +42,25 @@ public class DirectionControl  implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_RIGHT:
-                snake.setMovingDirection("RIGHT");
+                if (!snake.getMovingDirection().equals("LEFT")) {
+                    snake.setMovingDirection("RIGHT");
+                }
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                snake.setMovingDirection("LEFT");
+                if (!snake.getMovingDirection().equals("RIGHT")) {
+                    snake.setMovingDirection("LEFT");
+                }
                 break;
             case KeyboardEvent.KEY_UP:
-                snake.setMovingDirection("UP");
+                if (!snake.getMovingDirection().equals("DOWN")) {
+                    snake.setMovingDirection("UP");
+                }
                 break;
             case KeyboardEvent.KEY_DOWN:
-                snake.setMovingDirection("DOWN");
+                if (!snake.getMovingDirection().equals("UP")) {
+                    snake.setMovingDirection("DOWN");
+                }
                 break;
         }
     }
