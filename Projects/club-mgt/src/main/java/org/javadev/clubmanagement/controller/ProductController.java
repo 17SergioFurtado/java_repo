@@ -2,6 +2,7 @@ package org.javadev.clubmanagement.controller;
 
 import org.javadev.clubmanagement.dao.ProductsDao;
 import org.javadev.clubmanagement.model.Product;
+import org.javadev.clubmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,18 +15,13 @@ import java.util.List;
 @RequestMapping ("/product")
 public class ProductController {
 
-
-    public ProductsDao productsDao;
-
     @Autowired
-    public void setProductsDao(ProductsDao productsDao) {
-        this.productsDao = productsDao;
-    }
+    public ProductService productService;
 
     @GetMapping ("/list")
     public String listProducts(Model model){
 
-        List<Product> products = productsDao.getProducts();
+        List<Product> products = productService.getProducts();
         System.out.println(products.get(1).getId());
         model.addAttribute("products", products);
 
