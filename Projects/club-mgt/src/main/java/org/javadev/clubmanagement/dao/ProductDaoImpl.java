@@ -18,8 +18,6 @@ public class ProductDaoImpl implements ProductsDao {
     @PersistenceContext
     public EntityManager em;
 
-
-
     @Override
     public List<Product> getProducts(){
 
