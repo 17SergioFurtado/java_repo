@@ -74,12 +74,11 @@ public class Snake {
         return movingDirection;
     }
 
-    public boolean collisionDetected() {
-
+    public boolean detectWallCollision() {
         Rectangle snakeHead = this.snake.get(2);
 
         if (this.movingDirection.equals("DOWN")) {
-            if (snakeHead.getY() +20 > 600) {
+            if (snakeHead.getY() + 20 > 600) {
                 return true;
             }
         }
@@ -89,16 +88,53 @@ public class Snake {
             }
         }
         if (this.movingDirection.equals("LEFT")) {
-            if(snakeHead.getX() -40 < 0) {
+            if (snakeHead.getX() - 40 < 0) {
                 return true;
             }
         }
         if (this.movingDirection.equals("RIGHT")) {
-            if(snakeHead.getX() + 20 > 600) {
+            if (snakeHead.getX() + 20 > 600) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public boolean detectTailCollision() {
+        Rectangle snakeHead = this.snake.get(2);
+
+        for(Rectangle segment : this.snake) {
+            if (this.movingDirection.equals("UP")) {
+                if (snakeHead.getY() - 20 == segment.getY() && snakeHead.getX() == segment.getX()) {
+                    return true;
+                }
+            }
+
+            if (this.movingDirection.equals("DOWN")) {
+                if (snakeHead.getY() + 20 == segment.getY() && snakeHead.getX() == segment.getX()) {
+                    return true;
+                }
+            }
+
+            if (this.movingDirection.equals("LEFT")) {
+                if (snakeHead.getY() == segment.getY() && snakeHead.getX() - 20 == segment.getX()) {
+                    return true;
+                }
+            }
+
+            if (this.movingDirection.equals("RIGHT")) {
+                if (snakeHead.getY() == segment.getY() && snakeHead.getX() + 20 == segment.getX()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public boolean collisionDetected() {
+
+        return detectWallCollision() || detectTailCollision();
     }
 }
