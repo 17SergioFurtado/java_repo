@@ -8,6 +8,7 @@ public class Snake {
 
     private List<Rectangle> snake;
     private String movingDirection;
+    private int snakeSize;
 
     public Snake() {
 
@@ -15,22 +16,14 @@ public class Snake {
         this.snake = new LinkedList<>();
         this.movingDirection = "RIGHT";
 
-        segment = new Rectangle(20, 20, 20, 20);
-        segment.setColor(Color.BLACK);
-        segment.fill();
-        this.snake.add(segment);
+        for(int i = 1; i < 10; i++) {
+            segment = new Rectangle(Utils.SEGMENT_SIZE * i, Utils.SEGMENT_SIZE, Utils.PADDING, Utils.PADDING);
+            segment.setColor(Color.BLACK);
+            segment.fill();
+            this.snake.add(segment);
+        }
 
-        segment = new Rectangle(40, 20, 20, 20);
-        segment.setColor(Color.BLACK);
-        segment.fill();
-        this.snake.add(segment);
-
-        segment = new Rectangle(60, 20, 20, 20);
-        segment.setColor(Color.BLACK);
-        segment.fill();
-
-        this.snake.add(segment);
-
+        this.snakeSize = this.snake.size() - 1;
 
     }
 
@@ -47,19 +40,19 @@ public class Snake {
 
         if (this.movingDirection.equals("DOWN")) {
 
-            this.snake.get(2).translate(0, 20);
+            this.snake.get(this.snakeSize).translate(0, Utils.SEGMENT_SIZE);
         }
         if (this.movingDirection.equals("UP")) {
 
-            this.snake.get(2).translate(0, -20);
+            this.snake.get(this.snakeSize).translate(0, -Utils.SEGMENT_SIZE);
         }
         if (this.movingDirection.equals("LEFT")) {
 
-            this.snake.get(2).translate(-20, 0);
+            this.snake.get(this.snakeSize).translate(-Utils.SEGMENT_SIZE, 0);
         }
         if (this.movingDirection.equals("RIGHT")) {
 
-            this.snake.get(2).translate(20, 0);
+            this.snake.get(this.snakeSize).translate(Utils.SEGMENT_SIZE, 0);
         }
 
     }
@@ -78,22 +71,22 @@ public class Snake {
         Rectangle snakeHead = this.snake.get(2);
 
         if (this.movingDirection.equals("DOWN")) {
-            if (snakeHead.getY() + 20 > 600) {
+            if (snakeHead.getY() + Utils.SEGMENT_SIZE > Utils.SCREEN_HEITH) {
                 return true;
             }
         }
         if (this.movingDirection.equals("UP")) {
-            if (snakeHead.getY() - 40 < 0) {
+            if (snakeHead.getY() - Utils.SEGMENT_SIZE - Utils.PADDING < 0) {
                 return true;
             }
         }
         if (this.movingDirection.equals("LEFT")) {
-            if (snakeHead.getX() - 40 < 0) {
+            if (snakeHead.getX() - Utils.SEGMENT_SIZE - Utils.PADDING < 0) {
                 return true;
             }
         }
         if (this.movingDirection.equals("RIGHT")) {
-            if (snakeHead.getX() + 20 > 600) {
+            if (snakeHead.getX() + Utils.SEGMENT_SIZE > Utils.SCREEN_WIDTH) {
                 return true;
             }
         }
@@ -102,29 +95,29 @@ public class Snake {
     }
 
     public boolean detectTailCollision() {
-        Rectangle snakeHead = this.snake.get(2);
+        Rectangle snakeHead = this.snake.get(this.snakeSize);
 
         for(Rectangle segment : this.snake) {
             if (this.movingDirection.equals("UP")) {
-                if (snakeHead.getY() - 20 == segment.getY() && snakeHead.getX() == segment.getX()) {
+                if (snakeHead.getY() - Utils.SEGMENT_SIZE == segment.getY() && snakeHead.getX() == segment.getX()) {
                     return true;
                 }
             }
 
             if (this.movingDirection.equals("DOWN")) {
-                if (snakeHead.getY() + 20 == segment.getY() && snakeHead.getX() == segment.getX()) {
+                if (snakeHead.getY() + Utils.SEGMENT_SIZE == segment.getY() && snakeHead.getX() == segment.getX()) {
                     return true;
                 }
             }
 
             if (this.movingDirection.equals("LEFT")) {
-                if (snakeHead.getY() == segment.getY() && snakeHead.getX() - 20 == segment.getX()) {
+                if (snakeHead.getY() == segment.getY() && snakeHead.getX() - Utils.SEGMENT_SIZE == segment.getX()) {
                     return true;
                 }
             }
 
             if (this.movingDirection.equals("RIGHT")) {
-                if (snakeHead.getY() == segment.getY() && snakeHead.getX() + 20 == segment.getX()) {
+                if (snakeHead.getY() == segment.getY() && snakeHead.getX() + Utils.SEGMENT_SIZE == segment.getX()) {
                     return true;
                 }
             }

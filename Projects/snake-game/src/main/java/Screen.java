@@ -8,7 +8,7 @@ public class Screen {
     private boolean isCollisionDetected = false;
 
     public Screen() {
-        this.screen = new Rectangle(20, 20, 600, 600);
+        this.screen = new Rectangle(Utils.PADDING, Utils.PADDING, Utils.SCREEN_HEITH, Utils.SCREEN_WIDTH);
         this.screen.draw();
         this.snake = new Snake();
         this.keyBoardListener = new KeyBoardListener();
