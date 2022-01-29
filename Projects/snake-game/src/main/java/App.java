@@ -4,11 +4,7 @@ public class App {
 
         Screen screen = new Screen();
 
-        while (true) {
-
-            Thread.sleep(100);
             screen.update();
 
-        }
     }
 }

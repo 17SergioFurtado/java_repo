@@ -13,25 +13,20 @@ public class Snake {
 
         Rectangle segment;
         this.snake = new LinkedList<>();
-        this.movingDirection = "DOWN";
+        this.movingDirection = "RIGHT";
 
         segment = new Rectangle(20, 20, 20, 20);
         segment.setColor(Color.BLACK);
-        segment.draw();
         segment.fill();
-
         this.snake.add(segment);
 
         segment = new Rectangle(40, 20, 20, 20);
         segment.setColor(Color.BLACK);
-        segment.draw();
         segment.fill();
-
         this.snake.add(segment);
 
         segment = new Rectangle(60, 20, 20, 20);
         segment.setColor(Color.BLACK);
-        segment.draw();
         segment.fill();
 
         this.snake.add(segment);
@@ -47,6 +42,7 @@ public class Snake {
 
             segment = this.snake.get(i);
             segment.translate(this.snake.get(i + 1).getX() - this.snake.get(i).getX(), this.snake.get(i + 1).getY() - this.snake.get(i).getY());
+
         }
 
         if (this.movingDirection.equals("DOWN")) {
@@ -78,4 +74,31 @@ public class Snake {
         return movingDirection;
     }
 
+    public boolean collisionDetected() {
+
+        Rectangle snakeHead = this.snake.get(2);
+
+        if (this.movingDirection.equals("DOWN")) {
+            if (snakeHead.getY() +20 > 600) {
+                return true;
+            }
+        }
+        if (this.movingDirection.equals("UP")) {
+            if (snakeHead.getY() - 40 < 0) {
+                return true;
+            }
+        }
+        if (this.movingDirection.equals("LEFT")) {
+            if(snakeHead.getX() -40 < 0) {
+                return true;
+            }
+        }
+        if (this.movingDirection.equals("RIGHT")) {
+            if(snakeHead.getX() + 20 > 600) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
