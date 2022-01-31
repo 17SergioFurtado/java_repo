@@ -68,7 +68,7 @@ public class Snake {
     }
 
     public boolean detectWallCollision() {
-        Rectangle snakeHead = this.snake.get(2);
+        Rectangle snakeHead = this.snake.get(snakeSize);
 
         if (this.movingDirection.equals("DOWN")) {
             if (snakeHead.getY() + Utils.SEGMENT_SIZE > Utils.SCREEN_HEITH) {
