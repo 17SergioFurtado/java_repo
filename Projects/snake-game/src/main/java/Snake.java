@@ -9,9 +9,10 @@ public class Snake {
     private List<Rectangle> snake;
     private String movingDirection;
     private int snakeSize;
+    private int foodPos[];
+    private Rectangle head;
 
     public Snake() {
-
         Rectangle segment;
         this.snake = new LinkedList<>();
         this.movingDirection = "RIGHT";
@@ -24,6 +25,20 @@ public class Snake {
         }
 
         this.snakeSize = this.snake.size() - 1;
+        this.head = this.snake.get(this.snakeSize);
+
+    }
+
+    public void setFoodPos(int[] foodPos) {
+        this.foodPos = foodPos;
+    }
+    private void addSegment(){
+
+        Rectangle segment;
+        segment = new Rectangle(snake.get(0).getX() , snake.get(0).getY(), Utils.PADDING, Utils.PADDING);
+        segment.setColor(Color.BLACK);
+        segment.fill();
+        this.snake.add(segment);
 
     }
 
@@ -129,5 +144,18 @@ public class Snake {
     public boolean collisionDetected() {
 
         return detectWallCollision() || detectTailCollision();
+    }
+
+    public boolean collisionWithFood() {
+
+        if (this.foodPos[0] == this.head.getX() && this.foodPos[1] == this.head.getY()){
+            return true;
+        }
+     return false;
+    }
+
+    public void grow() {
+
+        this.addSegment();
     }
 }

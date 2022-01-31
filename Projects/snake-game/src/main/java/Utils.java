@@ -7,6 +7,6 @@ public class Utils {
 
     public static int randomInt() {
 
-        return (int) Math.floor(Math.random() * SCREEN_WIDTH);
+        return (int) Math.floor(Math.random() * SCREEN_WIDTH/SEGMENT_SIZE) * SEGMENT_SIZE;
     }
 }

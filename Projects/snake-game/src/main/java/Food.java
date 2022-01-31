@@ -13,9 +13,15 @@ public class Food {
     public void newPos() {
 
         int xpos = (Utils.randomInt() - this.food.getX());
-        int ypos = (Utils.randomInt() - this.food.getY());
-        System.out.println(Utils.randomInt());
+        int ypos = (Utils.randomInt() - this.food.getY() + Utils.PADDING);
+
         this.food.translate(xpos, ypos);
 
+    }
+
+    public int[] getFoodPos() {
+
+        int [] foodPos = {this.food.getX(), this.food.getY()};
+        return foodPos;
     }
 }

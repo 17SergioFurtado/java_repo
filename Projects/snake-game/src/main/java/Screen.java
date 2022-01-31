@@ -13,8 +13,10 @@ public class Screen {
         this.screen.draw();
         this.snake = new Snake();
         this.food = new Food();
+        this.snake.setFoodPos(this.food.getFoodPos());
         this.keyBoardListener = new KeyBoardListener();
         this.keyBoardListener.init(snake);
+
     }
 
     public void update() throws InterruptedException{
@@ -25,8 +27,14 @@ public class Screen {
             if (this.snake.collisionDetected()) {
                 break;
             }
+
+            if (this.snake.collisionWithFood()) {
+                this.food.newPos();
+                this.snake.setFoodPos(this.food.getFoodPos());
+                this.snake.grow();
+            }
             this.snake.move();
-            this.food.newPos();
+
         }
     }
 
