@@ -17,7 +17,7 @@ public class Snake {
         this.snake = new LinkedList<>();
         this.movingDirection = "RIGHT";
 
-        for(int i = 1; i < 10; i++) {
+        for(int i = 1; i < 2; i++) {
             segment = new Rectangle(Utils.SEGMENT_SIZE , Utils.SEGMENT_SIZE, Utils.PADDING, Utils.PADDING);
             segment.setColor(Color.BLACK);
             segment.fill();

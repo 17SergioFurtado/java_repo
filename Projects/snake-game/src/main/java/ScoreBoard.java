@@ -20,7 +20,7 @@ public class ScoreBoard {
     }
 
     public void gameOverText() {
-        Text gameOverText = new Text(300, 300, "--Game Over--");
+        Text gameOverText = new Text(300, 300, "*** Game Over ***");
         gameOverText.draw();
         gameOverText.grow(20,20);
     }

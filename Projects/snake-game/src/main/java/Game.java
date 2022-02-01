@@ -1,6 +1,6 @@
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class Screen {
+public class Game {
 
     private Rectangle screen;
     private Snake snake;
@@ -10,7 +10,7 @@ public class Screen {
     private boolean isCollisionDetected = false;
 
 
-    public Screen() {
+    public Game() {
         this.screen = new Rectangle(Utils.PADDING, Utils.PADDING, Utils.SCREEN_HEITH, Utils.SCREEN_WIDTH);
         this.screen.draw();
         this.snake = new Snake();
@@ -22,11 +22,10 @@ public class Screen {
 
     }
 
-    public void update() throws InterruptedException{
+    public void updateScreen() throws InterruptedException{
 
         while (!isCollisionDetected) {
 
-            Thread.sleep(100);
             if (this.snake.collisionDetected()) {
                 this.scoreBoard.gameOverText();
                 break;
@@ -40,6 +39,7 @@ public class Screen {
                 this.scoreBoard.updateScore();
             }
             this.snake.move();
+            Thread.sleep(100);
 
         }
     }

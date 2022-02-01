@@ -2,9 +2,9 @@ public class App {
 
     public static void main(String args[]) throws InterruptedException {
 
-        Screen screen = new Screen();
+        Game game = new Game();
 
-            screen.update();
+            game.updateScreen();
 
     }
 }
