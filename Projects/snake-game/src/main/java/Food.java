@@ -15,7 +15,7 @@ public class Food {
 
     public void newPos() {
 
-        int xpos = (Utils.randomInt() - this.food.getX());
+        int xpos = (Utils.randomInt() - this.food.getX() + Utils.PADDING);
         int ypos = (Utils.randomInt() - this.food.getY() + Utils.PADDING);
 
         this.food.translate(xpos, ypos);
