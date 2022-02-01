@@ -1,12 +1,15 @@
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Food {
 
-    private Rectangle food;
+    private Ellipse food;
 
     public Food() {
 
-        this.food = new Rectangle(Utils.SEGMENT_SIZE * 10, Utils.SEGMENT_SIZE * 10, Utils.PADDING, Utils.PADDING);
+        this.food = new Ellipse(Utils.SEGMENT_SIZE * 10, Utils.SEGMENT_SIZE * 10, Utils.PADDING, Utils.PADDING);
+        this.food.setColor(Color.GREEN);
         this.food.fill();
     }
 

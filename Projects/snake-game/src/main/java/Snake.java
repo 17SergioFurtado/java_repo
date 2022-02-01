@@ -40,7 +40,7 @@ public class Snake {
         segment.fill();
         this.snake.add(segment);
         this.snakeSize = this.snake.size() - 1;
-
+        this.head = this.snake.get(this.snakeSize);
     }
 
     public void move() {
