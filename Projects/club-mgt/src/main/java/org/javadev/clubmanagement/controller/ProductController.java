@@ -1,6 +1,5 @@
 package org.javadev.clubmanagement.controller;
 
-import org.javadev.clubmanagement.dao.ProductsDao;
 import org.javadev.clubmanagement.model.Product;
 import org.javadev.clubmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
