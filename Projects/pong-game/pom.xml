@@ -13,4 +13,14 @@
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.academiadecodigo.bootcamp</groupId>
+            <artifactId>simple-graphics</artifactId>
+            <scope>system</scope>
+            <systemPath>C:/Users/Sergio Furtado/.m2/repository/org/academiadecodigo/bootcamp/simple-graphics/0.2.1-SNAPSHOT/simple-graphics.jar</systemPath>
+            <version>0.2.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>
