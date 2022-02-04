@@ -7,6 +7,7 @@ public class PongGame {
     private Line fieldHalfLine;
     private UserPaddleImpl userPaddle;
     private ComputerPaddleImpl computerPaddle;
+    private Ball ball;
 
     public void start() throws InterruptedException {
 
@@ -16,6 +17,7 @@ public class PongGame {
         this.fieldHalfLine.draw();
         this.userPaddle = new UserPaddleImpl();
         this.computerPaddle = new ComputerPaddleImpl();
+        this.ball = new Ball();
 
         while(true) {
 
