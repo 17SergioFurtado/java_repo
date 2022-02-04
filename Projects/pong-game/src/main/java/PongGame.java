@@ -25,8 +25,15 @@ public class PongGame {
                 this.computerPaddle.changeMovingDirection();
                 }
 
-            Thread.sleep(100);
-            this.computerPaddle.move();
+            if(this.ball.collisionWithPaddle(this.userPaddle.getYPos(),this.computerPaddle.getYPos())) {
+                System.out.println("hit paddle!");
+                this.ball.changeMovingDirection();
+            }
+
+            Thread.sleep(50);
+            this.ball.move();
+//            this.computerPaddle.move();
+            this.userPaddle.setballPos(this.ball.getPos());
 
             }
     }
