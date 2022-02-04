@@ -29,7 +29,22 @@ public class UserPaddleImpl extends AbstractPaddle implements Paddle{
         this.paddle.translate(0, 10);
 
     }
-    public void showMov(){
-        System.out.println(movingDirection);
+
+
+    public boolean collisionTopDetected() {
+
+        if(this.paddle.getY() == 10) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean collisionBottomDetected() {
+
+        if(this.paddle.getY() == 250 + 10) {
+            return true;
+        }
+        return false;
     }
 }

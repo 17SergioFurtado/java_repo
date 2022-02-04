@@ -42,12 +42,18 @@ public class KeyBoardListener implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
-                this.paddle.setMovingDirection("UP");
-                this.paddle.moveUp();
+
+                if(!this.paddle.collisionTopDetected()){
+                    this.paddle.setMovingDirection("UP");
+                    this.paddle.moveUp();
+                }
                 break;
             case KeyboardEvent.KEY_DOWN:
-                this.paddle.setMovingDirection("DOWN");
-                this.paddle.moveDown();
+
+                if(!this.paddle.collisionBottomDetected()) {
+                    this.paddle.setMovingDirection("DOWN");
+                    this.paddle.moveDown();
+                }
                 break;
         }
     }
@@ -60,11 +66,15 @@ public class KeyBoardListener implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_UP:
+
                 this.paddle.setMovingDirection("NONE");
                 break;
+
             case KeyboardEvent.KEY_DOWN:
+
                 this.paddle.setMovingDirection("NONE");
                 break;
+
         }
 
 
