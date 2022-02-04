@@ -5,10 +5,10 @@ public class PongGame {
 
     private Rectangle field;
     private Line fieldHalfLine;
-    private Paddle userPaddle;
-    private Paddle computerPaddle;
+    private UserPaddleImpl userPaddle;
+    private ComputerPaddleImpl computerPaddle;
 
-    public void start() {
+    public void start() throws InterruptedException {
         this.field = new Rectangle(10 ,10,600, 300);
         this.field.draw();
         this.fieldHalfLine = new Line(300,10,300, 310);
@@ -16,5 +16,14 @@ public class PongGame {
         this.userPaddle = new UserPaddleImpl();
         this.computerPaddle = new ComputerPaddleImpl();
 
+        while(true) {
+            if (this.computerPaddle.collisionWithWallDetected()) {
+                this.computerPaddle.changeMovingDirection();
+                }
+            Thread.sleep(100);
+            this.computerPaddle.move();
+            userPaddle.showMov();
+            }
     }
+
 }

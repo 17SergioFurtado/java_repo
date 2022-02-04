@@ -6,6 +6,10 @@ public class App {
 
         pongGame = new PongGame();
 
-        pongGame.start();
+        try {
+            pongGame.start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
