@@ -26,7 +26,6 @@ public class PongGame {
                 }
 
             if(this.ball.collisionWithPaddle(this.userPaddle.getYPos(),this.computerPaddle.getYPos())) {
-                System.out.println("hit paddle!");
                 this.ball.changeMovingDirection();
             }
 
