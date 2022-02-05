@@ -42,24 +42,24 @@ public class KeyBoardListener implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_RIGHT:
-                if (!snake.getMovingDirection().equals("LEFT")) {
-                    snake.setMovingDirection("RIGHT");
+                if (!(snake.getMovingDirection() == MovingDirection.LEFT)) {
+                    snake.changeMovingDirection(MovingDirection.RIGHT);
                 }
                 break;
 
             case KeyboardEvent.KEY_LEFT:
-                if (!snake.getMovingDirection().equals("RIGHT")) {
-                    snake.setMovingDirection("LEFT");
+                if (!(snake.getMovingDirection() == MovingDirection.RIGHT)) {
+                    snake.changeMovingDirection(MovingDirection.LEFT);
                 }
                 break;
             case KeyboardEvent.KEY_UP:
-                if (!snake.getMovingDirection().equals("DOWN")) {
-                    snake.setMovingDirection("UP");
+                if (!(snake.getMovingDirection() == MovingDirection.DOWN)) {
+                    snake.changeMovingDirection(MovingDirection.UP);
                 }
                 break;
             case KeyboardEvent.KEY_DOWN:
-                if (!snake.getMovingDirection().equals("UP")) {
-                    snake.setMovingDirection("DOWN");
+                if (!(snake.getMovingDirection() == MovingDirection.UP)) {
+                    snake.changeMovingDirection(MovingDirection.DOWN);
                 }
                 break;
         }

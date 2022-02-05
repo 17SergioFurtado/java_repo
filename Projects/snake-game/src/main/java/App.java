@@ -1,6 +1,6 @@
 public class App {
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String args[]) {
 
         Game game = new Game();
 
