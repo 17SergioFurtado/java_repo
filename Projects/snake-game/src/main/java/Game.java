@@ -12,11 +12,18 @@ public class Game {
 
     public Game() {
 
+        init();
+    }
+
+    private void init() {
+
         this.screen = new Rectangle(Utils.PADDING, Utils.PADDING, Utils.SCREEN_HEITH, Utils.SCREEN_WIDTH);
         this.screen.draw();
 
         this.snake = new Snake();
+
         this.food = new Food();
+
         this.scoreBoard = new ScoreBoard();
 
         this.keyBoardListener = new KeyBoardListener();
@@ -24,22 +31,10 @@ public class Game {
 
     }
 
-    public void updateScreen() {
+    public void start() {
 
         while (!isCollisionDetected) {
 
-            if (this.snake.collisionDetected()) {
-                this.scoreBoard.gameOverText();
-                break;
-            }
-
-            if (this.snake.collisionWithFood(this.food.getXPos(), this.food.getYPos())) {
-
-                this.food.newPos();
-                this.snake.expand();
-                this.scoreBoard.increment();
-                this.scoreBoard.update();
-            }
 
             try {
 
@@ -48,7 +43,22 @@ public class Game {
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
+
+            if (this.snake.collisionDetected()) {
+                this.scoreBoard.gameOverText();
+                break;
+            }
+
             this.snake.move();
+            this.keyBoardListener.unlockKeyBoard();
+
+            if (this.snake.collisionWithFood(this.food.getXPos(), this.food.getYPos())) {
+
+                this.food.newPos();
+                this.snake.expand();
+                this.scoreBoard.increment();
+                this.scoreBoard.update();
+            }
 
         }
     }

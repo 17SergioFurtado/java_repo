@@ -4,7 +4,7 @@ public class App {
 
         Game game = new Game();
 
-            game.updateScreen();
+            game.start();
 
     }
 }
