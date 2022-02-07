@@ -26,10 +26,14 @@ public class PongGame {
                 }
 
             if(this.ball.collisionWithPaddle(this.userPaddle.getYPos(),this.computerPaddle.getYPos())) {
-                this.ball.changeMovingDirection();
+                this.ball.setballPaddleReactionAngle();
             }
 
-            Thread.sleep(50);
+            if(this.ball.detectCollisionWithWall()) {
+                this.ball.setballWallReactionAngle();
+            }
+
+            Thread.sleep(20);
             this.ball.move();
 //            this.computerPaddle.move();
             this.userPaddle.setballPos(this.ball.getPos());

@@ -4,28 +4,90 @@ import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 public class Ball {
 
     private Ellipse ball;
-    private String movingDirection;
+    private int movingAngle;
 
     public Ball() {
         this.ball = new Ellipse(290, 150, 20,20);
         this.ball.setColor(Color.GREEN);
         this.ball.fill();
-        this.movingDirection = "LEFT";
+        this.movingAngle = 45;
     }
 
     public void move() {
-        if (this.movingDirection.equals("RIGHT")) {
+        switch (this.movingAngle) {
 
-            this.ball.translate(10, 0);
-        } else {
-
-            this.ball.translate(-10, 0);
+            case 0:
+                this.ball.translate(10, 0);
+                break;
+            case 30:
+                this.ball.translate(10, 10);
+                break;
+            case 45:
+                this.ball.translate(10, -10);
+                break;
+            case 60:
+                this.ball.translate(10, 10);
+                break;
+            case 120:
+                this.ball.translate(10, 10);
+                break;
+            case 135:
+                this.ball.translate(-10, -10);
+                break;
+            case 150:
+                this.ball.translate(10, 10);
+                break;
+            case 180:
+                this.ball.translate(-10, 0);
+                break;
+            case 210:
+                this.ball.translate(10, 10);
+                break;
+            case 225:
+                this.ball.translate(-10, 10);
+                break;
+            case 240:
+                this.ball.translate(10, 10);
+                break;
+            case 300:
+                this.ball.translate(10, 10);
+                break;
+            case 315:
+                this.ball.translate(10, 10);
+                break;
+            case 330:
+                this.ball.translate(10, 10);
+                break;
+            case 360:
+                this.ball.translate(10, 0);
+                break;
         }
     }
 
-    public void changeMovingDirection() {
+    public void setballWallReactionAngle() {
 
-        this.movingDirection = (this.movingDirection.equals("LEFT")) ? "RIGHT" : "LEFT";
+        this.movingAngle = (360 - this.movingAngle < 360) ? 360 - this.movingAngle : 180 - this.movingAngle;
+
+    }
+
+
+    public void setballPaddleReactionAngle() {
+
+        this.movingAngle = (180 - this.movingAngle >= 0) ? 180 - this.movingAngle : 360 + 180 - this.movingAngle;
+
+    }
+
+    public boolean detectCollisionWithWall() {
+
+        if(this.ball.getY() - 20 < 0) {
+            return true;
+        }
+
+        if(this.ball.getY() + 20 > 300) {
+            return true;
+        }
+
+        return false;
     }
 
     public int[] getPos() {
