@@ -64,14 +64,14 @@ public class Ball {
         }
     }
 
-    public void setballWallReactionAngle() {
+    public void setWallReactionAngle() {
 
         this.movingAngle = (360 - this.movingAngle < 360) ? 360 - this.movingAngle : 180 - this.movingAngle;
 
     }
 
 
-    public void setballPaddleReactionAngle() {
+    public void setPaddleReactionAngle() {
 
         this.movingAngle = (180 - this.movingAngle >= 0) ? 180 - this.movingAngle : 360 + 180 - this.movingAngle;
 

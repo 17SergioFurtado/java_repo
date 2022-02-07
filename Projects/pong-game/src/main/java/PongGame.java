@@ -26,11 +26,11 @@ public class PongGame {
                 }
 
             if(this.ball.collisionWithPaddle(this.userPaddle.getYPos(),this.computerPaddle.getYPos())) {
-                this.ball.setballPaddleReactionAngle();
+                this.ball.setPaddleReactionAngle();
             }
 
             if(this.ball.detectCollisionWithWall()) {
-                this.ball.setballWallReactionAngle();
+                this.ball.setWallReactionAngle();
             }
 
             Thread.sleep(20);
