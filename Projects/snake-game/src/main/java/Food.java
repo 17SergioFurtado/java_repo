@@ -22,9 +22,11 @@ public class Food {
 
     }
 
-    public int[] getFoodPos() {
+    public int getXPos(){
+       return this.food.getX();
+    }
 
-        int [] foodPos = {this.food.getX(), this.food.getY()};
-        return foodPos;
+    public int getYPos(){
+        return this.food.getY();
     }
 }

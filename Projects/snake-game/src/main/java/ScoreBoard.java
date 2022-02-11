@@ -15,7 +15,7 @@ public class ScoreBoard {
         this.score++;
     }
 
-    public void updateScore() {
+    public void update() {
         this.text.setText("Score:" + this.score);
     }
 

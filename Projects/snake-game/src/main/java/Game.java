@@ -11,35 +11,54 @@ public class Game {
 
 
     public Game() {
+
+        init();
+    }
+
+    private void init() {
+
         this.screen = new Rectangle(Utils.PADDING, Utils.PADDING, Utils.SCREEN_HEITH, Utils.SCREEN_WIDTH);
         this.screen.draw();
+
         this.snake = new Snake();
+
         this.food = new Food();
+
         this.scoreBoard = new ScoreBoard();
-        this.snake.setFoodPos(this.food.getFoodPos());
+
         this.keyBoardListener = new KeyBoardListener();
         this.keyBoardListener.init(snake);
 
     }
 
-    public void updateScreen() throws InterruptedException{
+    public void start() {
 
         while (!isCollisionDetected) {
+
+
+            try {
+
+                Thread.sleep(100);
+
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
 
             if (this.snake.collisionDetected()) {
                 this.scoreBoard.gameOverText();
                 break;
             }
 
-            if (this.snake.collisionWithFood()) {
-                this.food.newPos();
-                this.snake.setFoodPos(this.food.getFoodPos());
-                this.snake.grow();
-                this.scoreBoard.increment();
-                this.scoreBoard.updateScore();
-            }
             this.snake.move();
-            Thread.sleep(100);
+            this.keyBoardListener.unlockKeyBoard();
+
+            if (this.snake.collisionWithFood(this.food.getXPos(), this.food.getYPos())) {
+
+                this.food.newPos();
+                this.snake.expand();
+                this.scoreBoard.increment();
+                this.scoreBoard.update();
+            }
 
         }
     }

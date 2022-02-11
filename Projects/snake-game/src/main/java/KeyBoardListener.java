@@ -8,9 +8,11 @@ public class KeyBoardListener implements KeyboardHandler {
 
     private Keyboard keyboard;
     private Snake snake;
+    private boolean keyboardLocked;
 
     public void init(Snake snake) {
 
+        this.keyboardLocked = false;
         this.snake = snake;
         keyboard = new Keyboard(this);
 
@@ -36,32 +38,55 @@ public class KeyBoardListener implements KeyboardHandler {
 
     }
 
+    public void unlockKeyBoard() {
+
+        this.keyboardLocked = false;
+    }
+
+
+    private void lockKeyBoard() {
+
+        this.keyboardLocked = true;
+    }
+
+
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-        switch (keyboardEvent.getKey()) {
+        if(!this.keyboardLocked) {
 
-            case KeyboardEvent.KEY_RIGHT:
-                if (!snake.getMovingDirection().equals("LEFT")) {
-                    snake.setMovingDirection("RIGHT");
-                }
-                break;
+            switch (keyboardEvent.getKey()) {
 
-            case KeyboardEvent.KEY_LEFT:
-                if (!snake.getMovingDirection().equals("RIGHT")) {
-                    snake.setMovingDirection("LEFT");
-                }
-                break;
-            case KeyboardEvent.KEY_UP:
-                if (!snake.getMovingDirection().equals("DOWN")) {
-                    snake.setMovingDirection("UP");
-                }
-                break;
-            case KeyboardEvent.KEY_DOWN:
-                if (!snake.getMovingDirection().equals("UP")) {
-                    snake.setMovingDirection("DOWN");
-                }
-                break;
+                case KeyboardEvent.KEY_RIGHT:
+                    if (!(snake.getMovingDirection() == MovingDirection.LEFT)) {
+                        snake.changeMovingDirection(MovingDirection.RIGHT);
+                        lockKeyBoard();
+
+                    }
+                    break;
+
+                case KeyboardEvent.KEY_LEFT:
+                    if (!(snake.getMovingDirection() == MovingDirection.RIGHT)) {
+                        snake.changeMovingDirection(MovingDirection.LEFT);
+                        lockKeyBoard();
+
+                    }
+                    break;
+                case KeyboardEvent.KEY_UP:
+                    if (!(snake.getMovingDirection() == MovingDirection.DOWN)) {
+                        snake.changeMovingDirection(MovingDirection.UP);
+                        lockKeyBoard();
+
+                    }
+                    break;
+                case KeyboardEvent.KEY_DOWN:
+                    if (!(snake.getMovingDirection() == MovingDirection.UP)) {
+                        snake.changeMovingDirection(MovingDirection.DOWN);
+                        lockKeyBoard();
+
+                    }
+                    break;
+            }
         }
     }
 
