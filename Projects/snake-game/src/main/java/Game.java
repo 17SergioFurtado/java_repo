@@ -36,6 +36,7 @@ public class Game {
         while (!isCollisionDetected) {
 
 
+
             try {
 
                 Thread.sleep(100);
@@ -50,7 +51,6 @@ public class Game {
             }
 
             this.snake.move();
-            this.keyBoardListener.unlockKeyBoard();
 
             if (this.snake.collisionWithFood(this.food.getXPos(), this.food.getYPos())) {
 

@@ -8,11 +8,9 @@ public class KeyBoardListener implements KeyboardHandler {
 
     private Keyboard keyboard;
     private Snake snake;
-    private boolean keyboardLocked;
 
     public void init(Snake snake) {
 
-        this.keyboardLocked = false;
         this.snake = snake;
         keyboard = new Keyboard(this);
 
@@ -38,29 +36,15 @@ public class KeyBoardListener implements KeyboardHandler {
 
     }
 
-    public void unlockKeyBoard() {
-
-        this.keyboardLocked = false;
-    }
-
-
-    private void lockKeyBoard() {
-
-        this.keyboardLocked = true;
-    }
-
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-
-        if(!this.keyboardLocked) {
 
             switch (keyboardEvent.getKey()) {
 
                 case KeyboardEvent.KEY_RIGHT:
                     if (!(snake.getMovingDirection() == MovingDirection.LEFT)) {
                         snake.changeMovingDirection(MovingDirection.RIGHT);
-                        lockKeyBoard();
 
                     }
                     break;
@@ -68,27 +52,23 @@ public class KeyBoardListener implements KeyboardHandler {
                 case KeyboardEvent.KEY_LEFT:
                     if (!(snake.getMovingDirection() == MovingDirection.RIGHT)) {
                         snake.changeMovingDirection(MovingDirection.LEFT);
-                        lockKeyBoard();
 
                     }
                     break;
                 case KeyboardEvent.KEY_UP:
                     if (!(snake.getMovingDirection() == MovingDirection.DOWN)) {
                         snake.changeMovingDirection(MovingDirection.UP);
-                        lockKeyBoard();
 
                     }
                     break;
                 case KeyboardEvent.KEY_DOWN:
                     if (!(snake.getMovingDirection() == MovingDirection.UP)) {
                         snake.changeMovingDirection(MovingDirection.DOWN);
-                        lockKeyBoard();
 
                     }
                     break;
             }
         }
-    }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
